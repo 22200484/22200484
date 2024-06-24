@@ -1,0 +1,63 @@
+---
+title: "Adv R Homework 1"
+author: "Suman Bhattacharjee (22200484)"
+format: 
+  pdf:
+    embed-resources: true
+    page-layout: full
+    code-block-bg: "#e5e6eb"
+    fontsize: 9 pt
+    geometry:
+      - right=22mm
+      - left=22mm
+      - top=28mm
+      - bottom=28mm
+include-in-header:
+  text: |
+   \usepackage{authblk,amsmath}
+editor: visual
+fig-width: 7
+fig-height: 3
+---
+
+# Introduction
+
+For this homework we will use the **'USArrests'** dataset which is present in r. This dataset contains the crime rates (murder, assault, rape) and percentage urban population of each state in the US.
+
+# Summary
+
+First let us look at the general summaries of the variables of this dataset
+
+```{r}
+#| echo: false
+
+library(datasets) # Loading the library
+
+summary(USArrests)
+```
+
+We can see that on average, assault is a more common crime in US than rape and murder. States can have an assault rate as high as 337 assaults per 100,000 population.
+
+# Plot
+
+Now we will try to see how the rate of assault is related to the percentage urban population of a state. To do this we will use a scatter plot and visualize the relation.
+
+```{r}
+#| echo: false # For hiding the code in the render
+#| message: false # For hiding any messages and warnings
+#| warning: false
+library(ggplot2)
+
+# Plotting the data using base R
+ggplot(data = USArrests, aes(x=UrbanPop, y = Assault))+
+  geom_point(color = 'blue')+
+  labs(x='% Urban Population', y = 'Assault rate', 
+       title = 'Assault Rate vs Percentage of Urban Population')+
+  theme(plot.title = element_text(hjust = 0.5))+
+  geom_smooth(method = "lm", se = FALSE, color = "red")
+
+```
+
+# Insight
+
+As we can see from the above scatter plot, there is a **positive linear correlation** between the Assault rate (per 100,000) and the percentage urban population.
