@@ -50,11 +50,11 @@ library(ggplot2)
 
 # Plotting the data using base R
 ggplot(data = USArrests, aes(x=UrbanPop, y = Assault))+
-  geom_point(color = 'blue')+
+  geom_point(color = 'brown')+
   labs(x='% Urban Population', y = 'Assault rate', 
        title = 'Assault Rate vs Percentage of Urban Population')+
   theme(plot.title = element_text(hjust = 0.5))+
-  geom_smooth(method = "lm", se = FALSE, color = "red")
+  geom_smooth(method = "lm", se = FALSE, color = "orange")
 
 ```
 
